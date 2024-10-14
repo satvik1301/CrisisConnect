@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEMP<title>
+</head>
+<body>
+  <h1>Testing frontend/backend communicaations<h1>
+  
+  <!-- Button to trigger the API request -->
+  <button onclick="fetchMessage()">Fetch Message</button>
+  
+  <!-- Display the message here -->
+  <p id="message"></p>
+  <script>
+    // This function will be called when the button is clicked
+    async function fetchMessage() {
+      try {
+        const response = await fetch('http://localhost:5000/api/message');
+        const data = await response.json();
+        document.getElementById('message').innerText = data.message;
+      } catch (error) {
+        console.error('Error fetching the message:', error);
+      }
+    }
+  </script>  
+</body>
+</html>
