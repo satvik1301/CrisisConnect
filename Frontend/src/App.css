@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if needed */
+  height: 100vh; /* Full height if you want to center vertically */
 }
 
 .App-logo {
@@ -35,4 +38,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Chart {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+}
+
+.Chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  gap: 20px; /* Space between columns */
+  justify-items: center; /* Centers charts horizontally in each column */
+  align-items: center; /* Centers charts vertically */
+  margin: 0 auto; /* Centers the entire grid on the page */
+  width: 100%; /* Adjust the width as needed */
+}
+
+
+.service{
+color:#282c34  
+}
+
+p {
+  color: white
 }
