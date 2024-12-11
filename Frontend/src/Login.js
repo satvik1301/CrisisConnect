@@ -5,9 +5,6 @@ const Login = () => {
     return (
         <div className="App" >
             <header className="App-header">
-                <Link to="/">
-                    <button>Home</button>
-                </Link>
                 <h1>Login</h1>
                 <p>Username:</p>
                 <input type = "text" placeholder="Enter your username" />

@@ -12,9 +12,6 @@ const Home = () => {
             <header className="App-header">
                 <div>
                     <h1>Welcome to the CrisisConnect Dashboard</h1>
-                    <Link to="/login">
-                        <button>Login</button>
-                    </Link>
                     {/*<button onClick={() => GetData()}>Fetch Message</button>*/}  
 
                     <div className="Chart-grid">
@@ -22,7 +19,7 @@ const Home = () => {
                         <p className="service">Service A</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
 
@@ -30,7 +27,7 @@ const Home = () => {
                         <p className="service">Service B</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
 
@@ -38,7 +35,7 @@ const Home = () => {
                         <p className="service">Service C</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
                     
@@ -46,7 +43,7 @@ const Home = () => {
                         <p className="service">Service D</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
                     
@@ -54,7 +51,7 @@ const Home = () => {
                         <p className="service">Service E</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
                     
@@ -62,7 +59,7 @@ const Home = () => {
                         <p className="service">Service F</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
                     </div>

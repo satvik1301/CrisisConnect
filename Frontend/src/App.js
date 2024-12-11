@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import Home from './Home';
 import Login from './Login';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 
 function App() {
 /*<div className="App">
@@ -31,6 +31,15 @@ async function GetData() {
 console.log(data);
   return (
     <div className="App">
+      <div className="spacing"></div>
+      <div className="Line"></div>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
+        </ul>
+      </nav>
+      <div className="Line"></div>
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
