@@ -1,6 +1,6 @@
 const sql = require('mssql')
 
-const sqlConfig = {
+const config = {
     user: "",
     password: "",
     server: "",
@@ -8,4 +8,4 @@ const sqlConfig = {
 
 }
 
-
+module.exports = config;
