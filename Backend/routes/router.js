@@ -19,4 +19,19 @@ catch(err){
     
 })
 
+router.get('/allAlerts', async(req, res) =>{
+    try{
+        const pool = await sql.connect(config)
+        const data = pool.request().query('Select * From Alerts')
+        data.then(response =>{
+            return res.json(response)}
+        )
+    
+    }
+    catch(err){
+        console.log(err)
+    }
+        
+    })
+
 module.exports = router;
