@@ -34,4 +34,31 @@ router.get('/allAlerts', async(req, res) =>{
         
     })
 
+    router.get('/getAllAgents', async(req, res) =>{
+        try{
+            const pool = await sql.connect(config)
+            const data = pool.request().query('Select * From Agents')
+            data.then(response =>{
+                return res.json(response)}
+            )
+        
+        }
+        catch(err){
+            console.log(err)
+        }
+            
+        })
+
+    router.put('/clientupdate', async(req, res) =>{
+        try{
+            const pool = await sql.connect(config)
+            const data = pool.request().query(`INSERT INTO Services (AgentID, ServiceID, ServiceName, Status, CreatedAt) VALUES (${req.AgentID}, ${req.ServiceID}, ${ServiceName}, ${Status}, ${CreatedAt})`)
+            return res(data);
+        }
+        catch(err){
+            console.log(err)
+        }
+            
+        })
+
 module.exports = router;
