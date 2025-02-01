@@ -1,5 +1,4 @@
-import { LineChart, Line, XAxis } from "recharts";
-import { Link } from 'react-router-dom';
+import { LineChart, Line } from "recharts";
 
 //datapoints for line graph
 const chart_data = [
@@ -59,7 +58,7 @@ const Home = () => {
                         <p className="service">Service F</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
+                            <Line type="monotone" dataKey="pv" stroke="F" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
                     </div>
