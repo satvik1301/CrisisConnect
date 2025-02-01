@@ -11,7 +11,7 @@ const Home = () => {
             <header className="App-header">
                 <div>
                     <h1>Welcome to the CrisisConnect Dashboard</h1>
-                    {/*<button onClick={() => GetData()}>Fetch Message</button>*/}  
+                    <h2 id='banner'></h2> 
 
                     <div className="Chart-grid">
                         <div className="Chart">
