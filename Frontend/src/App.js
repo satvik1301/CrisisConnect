@@ -11,7 +11,6 @@ function App() {
      <div>
     <h1>Testing frontend/backend communicaations</h1>
     <button onClick={() => GetData()}>Fetch Message</button> 
-
   </div>
   </header>
 </div>
@@ -19,8 +18,8 @@ function App() {
 
 const [data, setData] = React.useState(null);
 // This function will be called when the button is clicked
-async function GetData() {
-  await axios.get('http://localhost:5000/api')
+async function GetAlerts() {
+  await axios.get('http://localhost:5000/allAlerts')
       .then(res => {
         setData(res.data)         
       })
@@ -47,4 +46,5 @@ console.log(data);
     </div>
   );
 }
+
 export default App;

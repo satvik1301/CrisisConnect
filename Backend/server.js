@@ -18,8 +18,9 @@ app.use('/', router)
 
 
 const port = 5000
+const server = '192.168.68.85'
 
-app.listen(port, () => {
+app.listen(port, server, () => {
     console.log(`Server is running on port ${port}`)
 })
 

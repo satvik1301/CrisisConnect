@@ -49,16 +49,16 @@ router.get('/allAlerts', async(req, res) =>{
             
         })
 
-    router.put('/clientupdate', async(req, res) =>{
-        console.log(req)
-        try{
+    router.post('/clientUpdate', async(req, res) =>{
+        console.log(req.body) 
+       /* try{
             const pool = await sql.connect(config)
             const data = pool.request().query(`INSERT INTO Services (AgentID, ServiceID, ServiceName, Status, CreatedAt) VALUES (${req.AgentID}, ${req.ServiceID}, ${ServiceName}, ${Status}, ${CreatedAt})`)
             return res(data);
         }
         catch(err){
             console.log(err)
-        }
+        }*/
             
         })
 
