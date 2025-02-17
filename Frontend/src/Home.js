@@ -11,9 +11,10 @@ const Home = () => {
             <header className="App-header">
                 <div>
                     <h1>Welcome to the CrisisConnect Dashboard</h1>
-                    <h2 id='banner'></h2> 
+                    <h3 id='banner'></h3> 
 
                     <div className="Chart-grid">
+                        <section>
                         <div className="Chart">
                         <p className="service">Service A</p>
                         {/*this is the code to output the graph */}
@@ -21,6 +22,8 @@ const Home = () => {
                             <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
                         </LineChart>
                         </div>
+                        <h5>sample text</h5>
+                        </section>
 
                         <div className="Chart">
                         <p className="service">Service B</p>
