@@ -7,9 +7,6 @@ import Settings from './Settings';
 import { Route, Routes, Link } from 'react-router-dom'
 
 function App() {
-<<<<<<< HEAD
-
-=======
 /*<div className="App">
       <header className="App-header">
      <div>
@@ -19,7 +16,6 @@ function App() {
   </header>
 </div>
 */
->>>>>>> df40be9c9deb38825608d52c28a4c7eb9b96759d
 
 const [data, setData] = React.useState(null);
 // This function will be called when the button is clicked
