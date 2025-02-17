@@ -1,10 +1,14 @@
 const sql = require('mssql')
 
 const config = {
-    user: "",
-    password: "",
-    server: "",
-    port: 1433
+    user: "CCONNECTDEV",
+    password: "P@ssW0rd!",
+    server: "localhost",
+    database: "CrisisConnect",
+    port: 1433,
+    options: {
+        trustServerCertificate: true
+      }
 
 }
 

@@ -50,11 +50,12 @@ router.get('/allAlerts', async(req, res) =>{
         })
 
     router.post('/clientUpdate', async(req, res) =>{
-        console.log(req.body) 
+        const clientData = req.body; 
+        console.log(clientData);
        /* try{
             const pool = await sql.connect(config)
             const data = pool.request().query(`INSERT INTO Services (AgentID, ServiceID, ServiceName, Status, CreatedAt) VALUES (${req.AgentID}, ${req.ServiceID}, ${ServiceName}, ${Status}, ${CreatedAt})`)
-            return res(data);
+            return res(200);
         }
         catch(err){
             console.log(err)
@@ -62,4 +63,31 @@ router.get('/allAlerts', async(req, res) =>{
             
         })
 
+        router.post('/createAlert', async(req, res) =>{
+            console.log(req)
+            try{
+                const pool = await sql.connect(config)
+                const data = pool.request().query(`INSERT INTO Alerts (title, body, createdAt, createdBy, active) VALUES (${req.title}, ${req.body}, ${req.createdAt}, ${req.createdBy}, ${req.active})`)
+                return res(200);
+            }
+            catch(err){
+                console.log(err)
+            }
+                
+            })
+
+        router.get('/activeAlerts', async(req, res) =>{
+            try{
+                const pool = await sql.connect(config)
+                const data = pool.request().query(`Select * FROM Alerts WHERE active = 'true' `)
+                data.then(response =>{
+                    return res.json(response)}
+                )
+            
+            }
+            catch(err){
+                console.log(err)
+            }
+                
+            })
 module.exports = router;
