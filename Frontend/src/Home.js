@@ -1,6 +1,7 @@
-import { LineChart, Line } from "recharts";
+import { LineChart, Line, XAxis, YAxis } from "recharts";
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect } from 'react'
+const date = require('date-and-time');
 
 //datapoints for line graph
 const chart_data = [
@@ -11,12 +12,29 @@ const chart_data = [
 
 const Home = () => {
 
+    /*useEffect(() => {
+        GetClientData
+    })*/
+
+
     const [data, setData] = React.useState(null);
 
   async function GetClientData() {
     await axios.get('http://localhost:5000/getClientUpdates')
+        .then(res => {
+            const data1 = res.data.recordset.map(res1 => {
+                return {
+                    ...res1,
+                    Timestamp: date.parse(res1.Timestamp, 'YYYY/MM/DD HH:mm:ss')
+                }
+            })
+
+          setData(data1)         
+        })
         .catch(err => console.log(err))
   }
+
+  
 
   console.log(data);
 
@@ -35,52 +53,16 @@ const Home = () => {
                             
                         <p className="service">Service A</p>
                         {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
+                        <LineChart width={500} height={100} data={data}>
+                        <XAxis dataKey="Timestamp"/>
+                        <YAxis/>
+                            <Line type="monotone" dataKey="IsUp" stroke="#F97316" strokeWidth={2} dot={true}/>
                         </LineChart>
                         </div>
                         <h5>sample text</h5>
                         </section>
 
-                        <div className="Chart">
-                        <p className="service">Service B</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                        </LineChart>
-                        </div>
-
-                        <div className="Chart">
-                        <p className="service">Service C</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                        </LineChart>
-                        </div>
-                    
-                        <div className="Chart">
-                        <p className="service">Service D</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                        </LineChart>
-                        </div>
-                    
-                        <div className="Chart">
-                        <p className="service">Service E</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                        </LineChart>
-                        </div>
-                    
-                        <div className="Chart">
-                        <p className="service">Service F</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="F" strokeWidth={2} dot={false}/>
-                        </LineChart>
-                        </div>
+                        
                     </div>
                 </div>
             </header>

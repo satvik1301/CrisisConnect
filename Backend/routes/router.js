@@ -60,13 +60,14 @@ router.get('/allAlerts', async(req, res) =>{
         const newdate = date.format(new Date(), 'YYYY/MM/DD HH:mm:ss')
         const Timestamp = date.parse(newdate, 'YYYY/MM/DD HH:mm:ss')
 
-        console.log(newdate, Timestamp)
+        console.log(`${Devicename} Data Saved`)
+      //  console.log(req.body)
 
         try{
             const pool = await sql.connect(config)
             const data = pool.request().query(`INSERT INTO AgentCheckins (AgentID, Devicename, IPAddress, ResourceUsage, Uptime, Timestamp, IsUp) 
-                VALUES (${AgentID}, '${Devicename}', '${IPAdress}', '${ResourceUsage}', '${Uptime}', '${newdate}', 1)`)
-            return;
+                VALUES (${AgentID}, '${Devicename}', '${IPAdress}', '${ResourceUsage}', '${Uptime}', '${newdate}', 100)`)
+            return res.status(200);
         }
     
         catch(err){
@@ -75,22 +76,15 @@ router.get('/allAlerts', async(req, res) =>{
             
         })
 
-        router.get('/getClientUpdates', async(req, res) =>{
-
-            const AgentID = 1;
-            const Devicename = (req.body.Machine);
-            const IPAdress = '192.168.113.241'//(req.body.IPAddress)
-            const ResourceUsage = (req.body.SystemUsage);
-            const Uptime = (req.body.SystemUptime);
-            const newdate = date.format(new Date(), 'YYYY/MM/DD HH:mm:ss')
-            const Timestamp = date.parse(newdate, 'YYYY/MM/DD HH:mm:ss')
-    
-            console.log(newdate, Timestamp)
+        router.get('/getClientUpdates', async(req, res) =>{          
     
             try{
                 const pool = await sql.connect(config)
-                const data = pool.request().query(`SELECT * FROM AgentCheckins`)
-                console.log(data);
+                const data = pool.request().query(`SELECT * FROM AgentCheckins WHERE AgentID = 1`)
+                data.then(res1 =>{
+                    return res.json(res1);
+                }
+                )
             }
         
             catch(err){
@@ -104,7 +98,7 @@ router.get('/allAlerts', async(req, res) =>{
             try{
                 const pool = await sql.connect(config)
                 const data = pool.request().query(`INSERT INTO Alerts (title, body, createdAt, createdBy, active) VALUES (${req.title}, ${req.body}, ${req.createdAt}, ${req.createdBy}, ${req.active})`)
-                return res(200);
+                return res.status(200);
             }
             catch(err){
                 console.log(err)
