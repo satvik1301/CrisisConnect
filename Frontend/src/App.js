@@ -31,8 +31,7 @@ async function GetAlerts() {
 console.log(data);
   return (
     <div className="App">
-      <div className="spacing"></div>
-      <div className="Line"></div>
+      <div className="Nav">
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -40,7 +39,7 @@ console.log(data);
           <li><Link to="/settings">Settings</Link></li>
         </ul>
       </nav>
-      <div className="Line"></div>
+      </div>
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

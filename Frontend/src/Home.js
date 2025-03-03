@@ -30,17 +30,24 @@ const Home = () => {
                         Click Me
                     </button>
                     <div className="Chart-grid">
-                        <section>
                         <div className="Chart">
-                            
-                        <p className="service">Service A</p>
-                        {/*this is the code to output the graph */}
-                        <LineChart width={500} height={73} data={chart_data}>
-                            <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                        </LineChart>
+                            <p className="service">Service A</p>
+                            {/*this is the code to output the graph */}
+                            <LineChart width={500} height={73} data={chart_data}>
+                                <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
+                            </LineChart>
+                        
+                            <section className="subheader">
+                                <p className="notification">Sample Text</p>
+                                <div className="Comments">
+                                    <p>sample text</p>
+                                </div>
+                                <textarea className="Comment" />
+                                <br/>  
+                                <button>submit</button>             
+                            </section>
                         </div>
-                        <h5>sample text</h5>
-                        </section>
+
 
                         <div className="Chart">
                         <p className="service">Service B</p>
