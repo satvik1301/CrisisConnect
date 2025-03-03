@@ -2,7 +2,7 @@ const sql = require('mssql')
 
 const config = {
     user: "CCONNECTDEV",
-    password: "P@ssW0rd!",
+    password: "1234",
     server: "localhost",
     database: "CrisisConnect",
     port: 1433,
@@ -13,3 +13,4 @@ const config = {
 }
 
 module.exports = config;
+
