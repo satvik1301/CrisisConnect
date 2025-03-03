@@ -39,7 +39,7 @@ SELECT *
     
   }
 
-setInterval(checkUp, 1000)
+setInterval(checkUp, 1000000)
 
 
 
