@@ -11,13 +11,9 @@ const chart_data = [
 
 
 const Home = () => {
-
-    /*useEffect(() => {
-        GetClientData
-    })*/
-
-
     const [data, setData] = React.useState(null);
+
+
 
   async function GetClientData() {
     await axios.get('http://localhost:5000/getClientUpdates')
@@ -38,6 +34,20 @@ const Home = () => {
 
   console.log(data);
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/getClientUpdates')
+        .then(res => {
+            const data1 = res.data.recordset.map(res1 => {
+                return {
+                    ...res1,
+                    Timestamp: date.parse(res1.Timestamp, 'YYYY/MM/DD HH:mm:ss')
+                }
+            })
+          setData(data1)         
+        })
+        .catch(err => console.log(err))
+}, [])
+
     return (
         <div className="App">
             <header className="App-header">
@@ -45,7 +55,7 @@ const Home = () => {
                     <h1>Welcome to the CrisisConnect Dashboard</h1>
                     <h3 id='banner'></h3> 
                     <button onClick={GetClientData}>
-                        Click Me
+                        Refresh
                     </button>
                     <div className="Chart-grid">
                         <section>

@@ -5,6 +5,44 @@ const sql = require('mssql')
 const config = require('../Config/ssmsConfig')
 const date = require('date-and-time');
 
+const AgentIDs = [1,2];
+
+async function checkUp() {
+    console.log('This task runs every minute.');
+
+    const newdate = date.format(new Date(), 'YYYY/MM/DD HH:mm:ss')
+    const CurrentTime = date.parse(newdate, 'YYYY/MM/DD HH:mm:ss')
+    console.log(`Current Time ${CurrentTime}`)
+
+    //const checkins
+
+    try{
+        const pool = await sql.connect(config)
+        const data = pool.request().query(`WITH latest AS 
+     ( SELECT AgentID,
+                CreatedAt
+                OVER(PARTITION BY AgentID
+                         ORDER BY created_at DESC) AS rn 
+         FROM AgentCheckins )
+SELECT *
+  FROM latest
+ WHERE rn = 1`)
+        data.then(response =>{
+            console.log(response.recordset)
+        }
+        )
+    
+    }
+    catch(err){
+        console.log(err)
+    }
+    
+  }
+
+setInterval(checkUp, 1000)
+
+
+
 router.get('/allAgents', async(req, res) =>{
 try{
     const pool = await sql.connect(config)
@@ -52,9 +90,9 @@ router.get('/allAlerts', async(req, res) =>{
 
     router.post('/clientUpdate', async(req, res) =>{
 
-        const AgentID = 1;
-        const Devicename = (req.body.Machine);
-        const IPAdress = '192.168.113.241'//(req.body.IPAddress)
+        const AgentID = 2;
+        const Devicename = 'testdevice'//(req.body.Machine);
+        const IPAdress = '192.168.113.242'//(req.body.IPAddress)
         const ResourceUsage = (req.body.SystemUsage);
         const Uptime = (req.body.SystemUptime);
         const newdate = date.format(new Date(), 'YYYY/MM/DD HH:mm:ss')
@@ -80,7 +118,7 @@ router.get('/allAlerts', async(req, res) =>{
     
             try{
                 const pool = await sql.connect(config)
-                const data = pool.request().query(`SELECT * FROM AgentCheckins WHERE AgentID = 1`)
+                const data = pool.request().query(`SELECT * FROM AgentCheckins`)
                 data.then(res1 =>{
                     return res.json(res1);
                 }
