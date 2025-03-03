@@ -67,11 +67,12 @@ const Home = () => {
                         <YAxis/>
                             <Line type="monotone" dataKey="IsUp" stroke="#F97316" strokeWidth={2} dot={true}/>
                         </LineChart>
-                            <p className="service">Service A</p>
+                            {/* all of this is the sample chart I used as a visual example */}
+                            {/*<p className="service">Service A</p>*/}
                             {/*this is the code to output the graph */}
-                            <LineChart width={500} height={73} data={chart_data}>
+                            {/*<LineChart width={500} height={73} data={chart_data}>
                                 <Line type="monotone" dataKey="pv" stroke="#F97316" strokeWidth={2} dot={false}/>
-                            </LineChart>
+                            </LineChart>*/}
                         
                             <section className="subheader">
                                 <p className="notification">Sample Text</p>
