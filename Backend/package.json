@@ -13,8 +13,9 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "date-and-time": "^3.6.0",
     "express": "^4.21.2",
     "mssql": "^11.0.1",
-    "nodemon": "^3.1.9"
+    "sequelize": "^6.37.5"
   }
 }
