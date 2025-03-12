@@ -61,7 +61,7 @@ const Home = () => {
                         <section>
                         <div className="Chart">
                             
-                        <p className="service">Service A</p>
+                        <p className="service">Server A</p>
                         {/*this is the code to output the graph */}
                         <LineChart width={500} height={100} data={data}>
                         <XAxis dataKey="Timestamp"/>
@@ -69,10 +69,21 @@ const Home = () => {
                             <Line type="monotone" dataKey="IsUp" stroke="#F97316" strokeWidth={2} dot={true}/>
                         </LineChart>
                         </div>
-                        <h5>sample text</h5>
                         </section>
-
-                        
+                        <div className="Chart-grid">
+                        <section>
+                        <div className="Chart">
+                            
+                        <p className="service">testdevice</p>
+                        {/*this is the code to output the graph */}
+                        <LineChart width={500} height={100} data={data}>
+                        <XAxis dataKey="Timestamp"/>
+                        <YAxis/>
+                            <Line type="monotone" dataKey="IsUp" stroke="#F97316" strokeWidth={2} dot={true}/>
+                        </LineChart>
+                        </div>
+                        </section>
+                    </div>
                     </div>
                 </div>
             </header>

@@ -39,7 +39,7 @@ SELECT *
     
   }
 
-setInterval(checkUp, 1000000)
+// setInterval(checkUp, 1000000)
 
 
 
@@ -99,7 +99,7 @@ router.get('/allAlerts', async(req, res) =>{
         const Timestamp = date.parse(newdate, 'YYYY/MM/DD HH:mm:ss')
 
         console.log(`${Devicename} Data Saved`)
-      //  console.log(req.body)
+      console.log(req.body)
 
         try{
             const pool = await sql.connect(config)
