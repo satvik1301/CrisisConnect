@@ -1,38 +1,44 @@
 import './App.css';
-import React from 'react'
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Settings from './Settings';
-import { Route, Routes, Link } from 'react-router-dom'
 
 function App() {
-/*<div className="App">
-      <header className="App-header">
-     <div>
-    <h1>Testing frontend/backend communicaations</h1>
-    <button onClick={() => GetData()}>Fetch Message</button> 
-  </div>
-  </header>
-</div>
-*/
+    console.log("🔥 APP.JS is rendering!");
+    alert("🔥 APP.JS is rendering!");
 
-const [data, setData] = React.useState(null);
-// This function will be called when the button is clicked
-async function GetAlerts() {
-  await axios.get('http://localhost:5000/allAlerts')
-      .then(res => {
-        setData(res.data)         
-      })
-      .catch(err => console.log(err))
+    return (
+        <Router>
+            <div className="App">
+                <h1 style={{ background: "blue", color: "white", padding: "10px" }}>
+                    ✅ DEBUG: App Component is Rendering!
+                </h1>
+                
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/settings">Settings</Link></li>
+                    </ul>
+                </nav>
+
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/settings" element={<Settings />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 
 console.log(data);
   return (
     <div className="App">
-      <div className="spacing"></div>
-      <div className="Line"></div>
+      <div className="Nav">
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -40,7 +46,7 @@ console.log(data);
           <li><Link to="/settings">Settings</Link></li>
         </ul>
       </nav>
-      <div className="Line"></div>
+      </div>
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -48,6 +54,5 @@ console.log(data);
       </Routes>
     </div>
   );
-}
 
 export default App;
