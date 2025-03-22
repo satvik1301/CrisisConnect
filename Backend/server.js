@@ -1,27 +1,24 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const router = require('./routes/router')
-const app =  express()
+﻿const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const router = require('./routes/router');
+const app = express();
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
+// Middleware
+app.use(cors({ origin: '*', credentials: true, optionSuccessStatus: 200 }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json()); // You don't really need both express.json() AND bodyParser.json(), but it's fine if both are present
+app.use((req, res, next) => {
+    console.log(`➡️ ${req.method} request to ${req.url}`);
+    next();
+});
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200
-}
+// Routes
+app.use('/', router);
 
-app.use(cors(corsOptions))
-app.use('/', router)
-app.use(express.json());
-
-const port = 5000
-const server = `localhost`;
-
-app.listen(port, server,  () => {
-    console.log(`Server is running on port ${port}`)
-})
-
-
+// Server Start
+const port = 5000;
+app.listen(port, () => {
+    console.log(`🚀 Server is running at http://localhost:${port}`);
+});
