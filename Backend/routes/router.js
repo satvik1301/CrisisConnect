@@ -1,11 +1,11 @@
-const express = require('express')
+﻿const express = require('express')
 const router = express.Router()
 const data = require('../usernames.json')
 const sql = require('mssql')
 const config = require('../Config/ssmsConfig')
 const date = require('date-and-time');
 
-const AgentIDs = [1,2];
+
 
 async function checkUp() {
     console.log('This task runs every minute.');
@@ -14,21 +14,30 @@ async function checkUp() {
     const CurrentTime = date.parse(newdate, 'YYYY/MM/DD HH:mm:ss')
     console.log(`Current Time ${CurrentTime}`)
 
-    //const checkins
-
     try{
         const pool = await sql.connect(config)
-        const data = pool.request().query(`WITH latest AS 
-     ( SELECT AgentID,
-                CreatedAt
-                OVER(PARTITION BY AgentID
-                         ORDER BY created_at DESC) AS rn 
-         FROM AgentCheckins )
-SELECT *
-  FROM latest
- WHERE rn = 1`)
+        const data = pool.request().query(`SELECT *
+        FROM AgentCheckins x
+        WHERE CreatedAt = (
+				select max(CreatedAt)
+				from AgentCheckins y
+				where y.AgentID = x.AgentID
+)`)
         data.then(response =>{
-            console.log(response.recordset)
+            response.recordset.map(res => {
+                const datedif = date.subtract(CurrentTime, res.CreatedAt).toMinutes()
+                console.log(datedif);
+                if(datedif > 4){
+                    console.log(res)
+       pool.request().query(`INSERT INTO AgentCheckins (AgentID, Devicename, IPAddress, ResourceUsage, Uptime, Timestamp, IsUp) 
+        VALUES (${res.AgentID}, '${res.Devicename}', '${res.IPAdress}', '0.0%', '0d 0h 0m 0s', '${newdate}', 0)`)
+        return;
+
+                }
+                else{
+                    console.log(`Agent ${res.AgentID} Online`)
+                }
+            })
         }
         )
     
@@ -38,8 +47,8 @@ SELECT *
     }
     
   }
-
-// setInterval(checkUp, 1000000)
+//Check if online every 5 minutes
+setInterval(checkUp, 300000)
 
 
 

@@ -1,8 +1,6 @@
-import { LineChart, Line } from "recharts";
 import React, { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis } from "recharts";
 import axios from 'axios';
-import React, { useEffect } from 'react'
 const date = require('date-and-time');
 
 const chart_data = [
@@ -23,7 +21,7 @@ const Home = () => {
     }, []);
     const [data, setData] = React.useState(null);
 
-
+    console.log(data);
 
   async function GetClientData() {
     await axios.get('http://localhost:5000/getClientUpdates')
@@ -47,6 +45,7 @@ const Home = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/getClientUpdates')
         .then(res => {
+            console.log(res);
             const data1 = res.data.recordset.map(res1 => {
                 return {
                     ...res1,

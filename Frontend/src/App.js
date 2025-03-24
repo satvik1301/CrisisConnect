@@ -10,7 +10,7 @@ function App() {
     alert("🔥 APP.JS is rendering!");
 
     return (
-        <Router>
+        
             <div className="App">
                 <h1 style={{ background: "blue", color: "white", padding: "10px" }}>
                     ✅ DEBUG: App Component is Rendering!
@@ -30,29 +30,8 @@ function App() {
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
             </div>
-        </Router>
+        
     );
 }
-
-
-console.log(data);
-  return (
-    <div className="App">
-      <div className="Nav">
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
-        </ul>
-      </nav>
-      </div>
-     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </div>
-  );
 
 export default App;
