@@ -111,8 +111,8 @@ const Home = () => {
                             
                         <p className="service">Server A</p>
                         {/*this is the code to output the graph */}
-                        <LineChart width={500} height={100} data={data}>
-                        <XAxis dataKey="Timestamp"/>
+                        <LineChart width={750} height={100} data={data}>
+                        <XAxis dataKey="CreatedAt"/>
                         <YAxis/>
                             <Line type="monotone" dataKey="IsUp" stroke="#F97316" strokeWidth={2} dot={true}/>
                         </LineChart>
