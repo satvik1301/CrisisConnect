@@ -5,13 +5,13 @@ const date = require("date-and-time");
 
 // Sample chart data
 const chart_data = [
-    { name: "Page A", pv: 2400 },
-    { name: "Page B", pv: 1398 },
-    { name: "Page C", pv: 9730 },
-    { name: "Page D", pv: 3738 },
-    { name: "Page E", pv: 4730 },
-    { name: "Page F", pv: 3730 },
-    { name: "Page G", pv: 4500 },
+    { name: "Page A", pv: 1 },
+    { name: "Page B", pv: 1 },
+    { name: "Page C", pv: 1 },
+    { name: "Page D", pv: 0 },
+    { name: "Page E", pv: 1 },
+    { name: "Page F", pv: 1 },
+    { name: "Page G", pv: 1 },
 ];
 
 const Home = () => {
