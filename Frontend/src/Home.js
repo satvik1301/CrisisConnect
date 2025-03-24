@@ -61,9 +61,7 @@ const Home = () => {
         <div className="App">
             <header className="App-header">
                 
-                    {/* 🚨 FORCE VISIBLE DEBUGGING ELEMENTS */}
                     <h1 style={{ background: "red", color: "white", padding: "20px" }}>
-                        🚀 HOME.JS IS LOADED!
                     </h1>
 
                     <div className="Chart-grid">
@@ -77,9 +75,7 @@ const Home = () => {
                         ))}
                     </div>
 
-                    {/* 🚨 Debugging Section */}
                     <h2 style={{ background: "yellow", color: "black", padding: "10px" }}>
-                        🛠 DEBUG: Checking Email Alert Section Visibility
                     </h2>
 
                     <div style={{ 
@@ -132,9 +128,8 @@ const Home = () => {
                                 <br/>  
                                 <button>submit</button>             
                             </section>
+
                         </div>
-
-
                         
                     </div>
                 </div>
