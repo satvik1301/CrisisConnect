@@ -35,18 +35,25 @@ router.post('/createAlert', async (req, res) => {
         console.log("Incoming Alert:", req.body);
 
         const pool = await sql.connect(config);
-        await pool.request().query(`
-            INSERT INTO Alerts (title, body, createdAt, createdBy, active) 
-            VALUES ('${title}', '${body}', '${createdAt}', '${createdBy}', '${active}')
+
+        const request = pool.request();
+        request.input('title', sql.NVarChar, title);
+        request.input('body', sql.NVarChar, body);
+        request.input('createdAt', sql.DateTime, new Date(createdAt));
+        request.input('createdBy', sql.NVarChar, createdBy);
+        request.input('active', sql.Bit, active);
+
+        await request.query(`
+            INSERT INTO Alerts (title, body, createdAt, createdBy, active)
+            VALUES (@title, @body, @createdAt, @createdBy, @active)
         `);
 
-        return res.status(200).json({ success: true });
+        res.status(200).json({ success: true });
     } catch (err) {
         console.error("❌ Backend error in /createAlert:", err);
-        return res.status(500).json({ success: false, message: "Backend error" });
+        res.status(500).json({ success: false, message: "Backend error" });
     }
 });
-
 
 
 // GET: Return all client updates
