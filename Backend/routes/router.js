@@ -30,8 +30,14 @@ router.get('/allAlerts', async (req, res) => {
 
 // ✅ POST: Create a new alert (fixing your issue)
 router.post('/createAlert', async (req, res) => {
+    const title = req.body.title;
+    const body = req.body.body;
+    const createdAt = req.body.createdAt;
+    const createdBy = req.body.createdBy;
+    const active = req.body.active;
+
     try {
-        const { title, body, createdAt, createdBy, active } = req.body;
+        
         console.log("Incoming Alert:", req.body);
 
         const pool = await sql.connect(config);
@@ -72,11 +78,15 @@ router.get('/getClientUpdates', async (req, res) => {
 router.post('/clientUpdate', async (req, res) => {
     const { SystemUsage, SystemUptime } = req.body;
 
-    const AgentID = 2;
-    const Devicename = 'testdevice';
-    const IPAddress = '192.168.113.242';
-    const Timestamp = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+    console.log(req.body);
 
+    const int1 =  req.body.IPAddress.replace(".", "")
+    const int2 =  int1.replace(".", "");
+    const AgentID = Number(int2.replace(".", ""))
+    const Devicename = req.body.Machine;
+    const IPAddress = req.body.IPAddress;
+    const Timestamp = date.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+    console.log(AgentID)
     try {
         const pool = await sql.connect(config);
         await pool.request().query(`
@@ -94,7 +104,7 @@ router.post('/clientUpdate', async (req, res) => {
 router.get('/activeAlerts', async (req, res) => {
     try {
         const pool = await sql.connect(config);
-        const result = await pool.request().query(`SELECT * FROM Alerts WHERE active = 1`);
+        const result = await pool.request().query(`SELECT * FROM Alerts WHERE active = "True"`);
         res.json(result);
     } catch (err) {
         console.error('Error fetching active alerts:', err);
