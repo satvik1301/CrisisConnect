@@ -61,9 +61,9 @@ return  (
             </h1>*/}
             <h1>Welcome to the CrisisConnect Dashboard</h1>
             <h3 id='banner'></h3> 
-            {/*<button onClick={GetClientData}>
+            <button onClick={GetClientData}>
                 Refresh
-            </button>*/}
+            </button>
             <div className="Chart-grid">
                 <div className="Chart">         
                     <p className="service">Server A</p>
