@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis } from "recharts";
 import axios from 'axios';
 import React, { useEffect } from 'react'
-//const date = require('date-and-time');
+const date = require('date-and-time');
 
 //datapoints for line graph
 const chart_data = [
@@ -11,7 +11,7 @@ const chart_data = [
 
 
 const Home = () => {
-   /* useEffect(() => {
+    useEffect(() => {
         console.log("🚀 Home.js has been rendered!");
     }, []);
     const [data, setData] = React.useState(null);
@@ -50,7 +50,7 @@ const Home = () => {
         })
         .catch(err => console.log(err))
 }, [])
-*/
+
 return  (
     <div className="App">
         <header className="App-header">
